@@ -50,7 +50,7 @@ const BlogDetails = async ({ params }: { params: { id: string } }) => {
   };
 
   return (
-    <div className="flex flex-col bg-white text-black">
+    <div className="flex flex-col sm:w-full bg-white text-black">
       <Navbar />
       <div className="w-full max-w-[1312px] mx-auto flex flex-col gap-12 py-10 px-4 sm:px-6 lg:px-8">
         <div className="w-full gap-5">
