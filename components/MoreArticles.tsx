@@ -92,6 +92,7 @@ export const MoreArticlesSection: React.FC = () => {
             className="w-full h-auto flex flex-col rounded-t-lg gap-6 sm:gap-[32px]"
           >
             <div className="w-full h-[200px] sm:h-[300px] relative">
+              
               <Image
                 src={article.cover_image || "/images/bg.png"}
                 alt={article.title}
@@ -120,7 +121,7 @@ export const MoreArticlesSection: React.FC = () => {
                   </div>
                   <p
                     onClick={() => router.push(`/articles/${article.id}`)}
-                    className="w-[74px] h-auto text-[#571244] cursor-pointer self-center underline underline-offset-2 decoration-1 cursor-pointer"
+                    className="w-[74px] h-auto text-[#571244] self-center underline underline-offset-2 decoration-1 cursor-pointer"
                   >
                     View Post
                   </p>

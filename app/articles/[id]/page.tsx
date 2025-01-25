@@ -1,8 +1,8 @@
 import React from "react";
+import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Newsletter } from "@/components/Newsletter";
-import Image from "next/image";
 import { MoreArticlesSection } from "@/components/MoreArticles";
 
 interface Article {
@@ -88,8 +88,9 @@ const BlogDetails = async ({ params }: { params: { id: string } }) => {
       <MoreArticlesSection />
 
       <Newsletter />
-
-      <Footer />
+      <div className="text-white">
+        <Footer />
+      </div>
     </div>
   );
 };
