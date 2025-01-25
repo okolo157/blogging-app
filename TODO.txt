@@ -1,5 +1,7 @@
 // Add tags to blog elements
-// Replace svg in navbar with actual elements - in progress
+// Replace svg in navbar with actual elements - done
+// Add dropdown navbar to hamburger
 // Optimize all images for webp/avif
 // Replace all excessive svg with actual elements
+
 // Use semantic elements instead
