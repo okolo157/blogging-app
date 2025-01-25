@@ -7,7 +7,7 @@ export const Footer = () => {
       <div className="w-full max-w-[1312px] mx-auto flex flex-col md:flex-row justify-between gap-8">
         <section className="max-w-[356px] flex flex-col gap-4">
           <Image
-            src="/images/bg.png"
+            src="/images/logo.webp"
             alt="footer tobams logo"
             width={188}
             height={72}

@@ -17,7 +17,7 @@ export const Navbar = () => {
       <div className="flex justify-between p-4 lg:p-10 w-full h-16 lg:h-[104px] border-b border-gray-300 mx-auto">
         <Link href="/" passHref>
           <Image
-            src="/images/bg.png"
+            src="/images/logo.webp"
             alt="logo image"
             width={165.71}
             height={64}
