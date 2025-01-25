@@ -1,0 +1,4 @@
+// Add tags to blog elements
+// Replace svg in navbar with actual elements
+// Optimize all images for webp/avif
+// Replace all excessive svg with actual elements
