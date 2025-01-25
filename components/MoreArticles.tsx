@@ -12,6 +12,7 @@ interface Article {
   readable_publish_date: string;
   reading_time_minutes: string;
   published_timestamp: string;
+  tag_list: string[];
 }
 
 export const MoreArticlesSection: React.FC = () => {
@@ -92,7 +93,9 @@ export const MoreArticlesSection: React.FC = () => {
             className="w-full h-auto flex flex-col rounded-t-lg gap-6 sm:gap-[32px]"
           >
             <div className="w-full h-[200px] sm:h-[300px] relative">
-              
+              <div className="absolute top-2 left-2 z-10 rounded-md max-w-[250px] flex items-center p-2 text-[#571244] backdrop-blur-[9.09px] bg-white/50 text-sm font-medium">
+                {article.tag_list[0]}
+              </div>
               <Image
                 src={article.cover_image || "/images/bg.png"}
                 alt={article.title}

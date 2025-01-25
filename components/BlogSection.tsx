@@ -53,11 +53,7 @@ export const BlogSection: React.FC = () => {
         `https://dev.to/api/articles?page=${page}&per_page=6`
       );
       const data: Article[] = await response.json();
-      data.forEach((article, index) => {
-        console.log(`Article ${index + 1} tags:`, article.tag_list);
-      });
       setArticles(data);
-      console.log("Fetched Articles:", data);
     } catch (error) {
       console.error("Error fetching articles:", error);
     } finally {
