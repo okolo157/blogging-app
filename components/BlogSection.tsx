@@ -1,7 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface Article {
   id: number;
@@ -17,6 +18,8 @@ export const BlogSection: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [page, setPage] = useState<number>(1);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const router = useRouter();
 
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
@@ -171,12 +174,12 @@ export const BlogSection: React.FC = () => {
                       {article.reading_time_minutes} mins read
                     </p>
                   </div>
-                  <a
-                    href={`https://dev.to/${article.id}`}
+                  <p
+                    onClick={() => router.push(`/articles/${article.id}`)}
                     className="w-[74px] h-auto text-[#571244] self-center underline underline-offset-2 decoration-1"
                   >
                     View Post
-                  </a>
+                  </p>
                 </div>
               </div>
             </div>

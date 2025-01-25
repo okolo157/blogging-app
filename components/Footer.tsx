@@ -134,7 +134,6 @@ export const Footer = () => {
         </section>
       </div>
 
-      {/* Bottom Section (Registered Offices and Contact Information) */}
       <section className="max-w-[1312px] mt-10 w-full mx-auto">
         <div className="bg-[#FFFFFF0F] flex flex-col md:flex-row-reverse md:justify-center rounded-lg p-6 md:p-[24px] gap-6 md:gap-[24px]">
           <div className="flex flex-col gap-4 md:gap-[10px] flex-[20%]">

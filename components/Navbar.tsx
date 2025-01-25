@@ -1,7 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 export const Navbar = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -13,13 +14,15 @@ export const Navbar = () => {
   return (
     <div className="bg-white w-full lg:w-[1440px] h-auto">
       <div className="flex justify-between p-4 lg:p-10 w-full h-16 lg:h-[104px] border-b border-gray-300 mx-auto">
-        <Image
-          src="/images/bg.png"
-          alt="background image"
-          width={165.71}
-          height={64}
-          className="w-24 lg:w-[165px] lg:h-[64px] cursor-pointer self-center"
-        />
+        <Link href="/" passHref>
+          <Image
+            src="/images/bg.png"
+            alt="logo image"
+            width={165.71}
+            height={64}
+            className="w-24 lg:w-[165px] lg:h-[64px] cursor-pointer self-center"
+          />
+        </Link>
 
         <button className="lg:hidden">
           <svg
