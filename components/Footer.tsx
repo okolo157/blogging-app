@@ -134,30 +134,12 @@ export const Footer = () => {
         </section>
       </div>
 
-      <section className="max-w-[1312px] mt-10 w-[1312px] max-h-[221px] pt-[20px] pb-[20px] gap-2">
-        <div className="bg-[#FFFFFF0F] flex rounded-lg p-[24px] max-h-[181px] gap-[24px]">
-          <div className="flex flex-col max-h-[133px] max-w-[962px] gap-[10px]">
-            <p className="w-[171px] my-2 font-bold text-xl">
-              Registered offices
-            </p>
-            <div className="flex">
-              <p className="flex flex-col font-sm text-base">
-                <span className="text-[#bb3745]">United Kingdom</span>
-                07451196 (Registered by Company House) Vine Cottages, 215 North
-                Street, Romford, Essex, United Kingdom, RM1 4QA
-              </p>
-              <div className="h-[90px] self-center border-[1px] border-purple-300 opacity-20 mx-3"></div>
-              <p className="flex flex-col font-sm text-base">
-                <span className="text-[#bb3745]">Nigeria</span>
-                RC 1048722 (Registered by the Corporate Affairs Commission) 4,
-                Muaz Close, Angwar-Rimi
-              </p>
-            </div>
-          </div>
-          <div className="h-[133px] self-center border-[1px] border-purple-300 opacity-20 mx-3"></div>
-          <div className="max-w-[254px] max-h-[104px] flex flex-col gap-[10px]">
-            <p className="max-w-[186px] max-h-[27px] font-bold text-[20px] my-2"> Contact Information</p>
-            <p className="flex items-center gap-[16px]">
+      {/* Bottom Section (Registered Offices and Contact Information) */}
+      <section className="max-w-[1312px] mt-10 w-full mx-auto">
+        <div className="bg-[#FFFFFF0F] flex flex-col md:flex-row-reverse md:justify-center rounded-lg p-6 md:p-[24px] gap-6 md:gap-[24px]">
+          <div className="flex flex-col gap-4 md:gap-[10px] flex-[20%]">
+            <p className="font-bold text-[20px]">Contact Information</p>
+            <p className="flex items-center gap-4">
               <svg
                 width="20"
                 height="17"
@@ -172,7 +154,7 @@ export const Footer = () => {
               </svg>
               theteam@tobamsgroup.com
             </p>
-            <p className="flex items-center gap-[16px]">
+            <p className="flex items-center gap-4">
               <svg
                 width="18"
                 height="19"
@@ -187,6 +169,25 @@ export const Footer = () => {
               </svg>
               +447886600748
             </p>
+          </div>
+
+          <div className="hidden md:block h-[133px] w-[1px] bg-purple-300 opacity-20"></div>
+
+          <div className="flex flex-col gap-4 md:gap-[10px] flex-[80%] ">
+            <p className="font-bold text-xl">Registered offices</p>
+            <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+              <p className="flex flex-col text-base">
+                <span className="text-[#bb3745]">United Kingdom</span>
+                07451196 (Registered by Company House) Vine Cottages, 215 North
+                Street, Romford, Essex, United Kingdom, RM1 4QA
+              </p>
+              <div className="hidden md:block h-[90px] w-[1px] bg-purple-300 opacity-20"></div>
+              <p className="flex flex-col text-base">
+                <span className="text-[#bb3745]">Nigeria</span>
+                RC 1048722 (Registered by the Corporate Affairs Commission) 4,
+                Muaz Close, Angwar-Rimi
+              </p>
+            </div>
           </div>
         </div>
       </section>
