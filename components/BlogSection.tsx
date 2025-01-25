@@ -66,14 +66,15 @@ export const BlogSection: React.FC = () => {
   };
 
   return (
-    <div className="w-[1440px] bg-white p-[64px_32px] flex flex-col gap-[60px]">
-      <p className="text-center text-[40px] text-[#571244]">
+    <div className="w-full lg:w-[1440px] bg-white p-8 sm:p-[64px_32px] flex flex-col gap-8 sm:gap-[60px]">
+      <p className="text-center text-2xl sm:text-[40px] text-[#571244]">
         Stay Updated with the Latest trends in Tobams Group
       </p>
-      <div className="w-full max-w-[1312px] mx-auto h-[40px] gap-[28px] flex align-center justify-center">
-        <div className="relative w-full max-w-[635px]">
+
+      <div className="w-full max-w-[1312px] mx-auto h-auto sm:h-[40px] gap-4 sm:gap-[28px] flex items-center">
+        <div className="relative flex-1">
           <input
-            className="border w-full border-t-gray-300 p-[8px_12px] h-auto pr-10"
+            className="border w-full border-t-gray-300 p-2 sm:p-[8px_12px] h-auto pr-10"
             type="text"
             placeholder="Search"
           />
@@ -95,9 +96,26 @@ export const BlogSection: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative w-full max-w-[190px]">
+        <div className="sm:hidden border border-t-gray-300 p-2 flex items-center justify-center w-10 h-10">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="#151515"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m19.5 8.25-7.5 7.5-7.5-7.5"
+            />
+          </svg>
+        </div>
+
+        <div className="hidden sm:block relative w-full max-w-[190px]">
           <input
-            className="border w-full border-t-gray-300 p-[8px_12px] h-auto pr-10"
+            className="border w-full border-t-gray-300 p-2 sm:p-[8px_12px] h-auto pr-10"
             type="input"
             placeholder="All Posts"
           />
@@ -120,13 +138,13 @@ export const BlogSection: React.FC = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px] w-full max-w-[1312px] mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-[30px] w-full max-w-[1312px] mx-auto">
         {articles.map((article) => (
           <article
             key={article.id}
-            className="w-full h-auto flex flex-col rounded-t-lg gap-[32px]"
+            className="w-full h-auto flex flex-col rounded-t-lg gap-6 sm:gap-[32px]"
           >
-            <div className="w-full h-[300px] relative">
+            <div className="w-full h-[200px] sm:h-[300px] relative">
               <Image
                 src={article.cover_image || "/images/bg.png"}
                 alt={article.title}
@@ -134,17 +152,18 @@ export const BlogSection: React.FC = () => {
                 className="object-cover rounded-t-lg"
               />
             </div>
-            <div className="w-full h-auto gap-6">
-              <h2 className="text-[20px] my-[10px] text-[#151515] font-semibold">
+
+            <div className="w-full h-auto gap-4 sm:gap-6">
+              <h2 className="text-lg sm:text-[20px] my-2 sm:my-[10px] text-[#151515] font-semibold">
                 {article.title}
               </h2>
               <div className="text-[#696969]">
-                <p className="w-full h-auto font-normal text-[18px] my-[20px]">
+                <p className="w-full h-auto font-normal text-base sm:text-[18px] my-4 sm:my-[20px]">
                   {article.description}
                 </p>
                 <div className="flex justify-between">
                   <div className="flex h-auto justify-center items-center">
-                    <p className="w-[129px] font-normal text-[15px] self-center">
+                    <p className="w-[129px] font-normal text-sm sm:text-[15px] self-center">
                       {formatDate(article.published_timestamp)}
                     </p>
                     <div className="h-3/4 self-center border-l-2 border-gray-700 mx-3"></div>
@@ -169,7 +188,7 @@ export const BlogSection: React.FC = () => {
         <button
           onClick={handleLoadMore}
           disabled={isLoading}
-          className=" my-8 h-[48px] bg-none p-[12px_24px] border font-semibold align-middle text-lg border-[#571244] text-[#571244] rounded-md text-center"
+          className="my-4 sm:my-8 h-[48px] bg-none p-[12px_24px] border font-semibold align-middle text-base sm:text-lg border-[#571244] text-[#571244] rounded-md text-center"
         >
           {isLoading ? "Loading..." : "Load More"}
         </button>
