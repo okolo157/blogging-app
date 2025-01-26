@@ -5,6 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Newsletter } from "@/components/Newsletter";
 import { MoreArticlesSection } from "@/components/MoreArticles";
+import { load } from "cheerio";
 
 interface Article {
   id: number;
@@ -19,24 +20,24 @@ interface Article {
 }
 
 const BlogDetails = async ({ params }: { params: { id: string } }) => {
-    const { id } = params;
+  const { id } = params;
 
-    const parsedId = parseInt(id, 10);
-    if (isNaN(parsedId)) {
-      notFound(); 
-    }
+  const parsedId = parseInt(id, 10);
+  if (isNaN(parsedId)) {
+    notFound();
+  }
 
-    const response = await fetch(`https://dev.to/api/articles/${parsedId}`);
+  const response = await fetch(`https://dev.to/api/articles/${parsedId}`);
 
-    if (!response.ok) {
-      notFound(); 
-    }
+  if (!response.ok) {
+    notFound();
+  }
 
-    const article: Article = await response.json();
+  const article: Article = await response.json();
 
-    if (!article || parsedId !== article.id) {
-      notFound(); 
-    }
+  if (!article || parsedId !== article.id) {
+    notFound();
+  }
 
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
@@ -61,8 +62,35 @@ const BlogDetails = async ({ params }: { params: { id: string } }) => {
     return `${day}${ordinalSuffix(day)} ${month} ${year}`;
   };
 
+  //youtube embed issue
+const makeEmbedsResponsive = (html: string) => {
+  const $ = load(html);
+
+  $("iframe[src*='youtube.com'], iframe[src*='vimeo.com']").each(
+    (_, element) => {
+      const $iframe = $(element);
+
+      $iframe.removeAttr("width").removeAttr("height");
+
+      $iframe.wrap(
+        '<div class="iframe-container" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;"></div>'
+      );
+
+      $iframe.css({
+        position: "absolute",
+        top: "0",
+        left: "0",
+        width: "100%",
+        height: "100%",
+      });
+    }
+  );
+
+  return $.html();
+};
+
   return (
-    <div className="flex flex-col sm:w-full bg-white text-black">
+    <div className="flex flex-col sm:w-full lg:w-[1440px] bg-white text-black">
       <Navbar />
       <div className="w-full max-w-[1312px] mx-auto flex flex-col gap-12 py-10 px-4 sm:px-6 lg:px-8">
         <div className="w-full gap-5">
@@ -92,13 +120,14 @@ const BlogDetails = async ({ params }: { params: { id: string } }) => {
 
           <div
             className="prose prose-sm sm:prose lg:prose-lg mx-auto"
-            dangerouslySetInnerHTML={{ __html: article.body_html }}
+            dangerouslySetInnerHTML={{
+              __html: makeEmbedsResponsive(article.body_html),
+            }}
           />
         </div>
       </div>
 
       <MoreArticlesSection />
-
       <Newsletter />
       <div className="text-white">
         <Footer />
