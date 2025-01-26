@@ -23,7 +23,7 @@ type BlogDetailsProps = {
   params: { id: string };
 };
 
-const BlogDetails = async ({ params }: BlogDetailsProps) => {
+export default async function BlogDetails({ params }: BlogDetailsProps) {
   const { id } = params;
 
   const parsedId = parseInt(id, 10);
