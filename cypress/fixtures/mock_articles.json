@@ -1,0 +1,22 @@
+[
+  {
+    "id": 2165092,
+    "title": "Test Article 1",
+    "description": "This is a test article.",
+    "cover_image": "/images/logo.webp",
+    "readable_publish_date": "Jan 1, 2023",
+    "reading_time_minutes": "5",
+    "published_timestamp": "2023-01-01T00:00:00Z",
+    "tag_list": ["JavaScript", "React"]
+  },
+  {
+    "id": 2234343,
+    "title": "Test Article 2",
+    "description": "This is another test article.",
+    "cover_image": "/images/logo.webp",
+    "readable_publish_date": "Jan 2, 2023",
+    "reading_time_minutes": "10",
+    "published_timestamp": "2023-01-02T00:00:00Z",
+    "tag_list": ["TypeScript", "Node.js"]
+  }
+]

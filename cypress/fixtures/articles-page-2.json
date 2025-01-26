@@ -1,0 +1,33 @@
+[
+  {
+    "id": 3,
+    "title": "Test Article 3",
+    "description": "Description for Article 3",
+    "cover_image": null,
+    "readable_publish_date": "2023-01-03",
+    "reading_time_minutes": "6",
+    "published_timestamp": "2023-01-03T00:00:00Z",
+    "tag_list": ["Finance"]
+  },
+  {
+    "id": 4,
+    "title": "Test Article 4",
+    "description": "Description for Article 4",
+    "cover_image": null,
+    "readable_publish_date": "2023-01-04",
+    "reading_time_minutes": "8",
+    "published_timestamp": "2023-01-04T00:00:00Z",
+    "tag_list": ["Education"]
+  },
+   {
+     "id": 5,
+     "title": "Test Article 5",
+     "description": "Description for Article 5",
+     "cover_image": null,
+     "readable_publish_date": "2023-01-04",
+     "reading_time_minutes": "8",
+     "published_timestamp": "2023-01-04T00:00:00Z",
+     "tag_list": ["webdev"]
+   }
+
+]

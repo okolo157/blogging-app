@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Newsletter } from "@/components/Newsletter";
@@ -18,13 +19,24 @@ interface Article {
 }
 
 const BlogDetails = async ({ params }: { params: { id: string } }) => {
-  const { id } = params;
-  const response = await fetch(`https://dev.to/api/articles/${id}`);
+    const { id } = params;
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch article");
-  }
-  const article: Article = await response.json();
+    const parsedId = parseInt(id, 10);
+    if (isNaN(parsedId)) {
+      notFound(); 
+    }
+
+    const response = await fetch(`https://dev.to/api/articles/${parsedId}`);
+
+    if (!response.ok) {
+      notFound(); 
+    }
+
+    const article: Article = await response.json();
+
+    if (!article || parsedId !== article.id) {
+      notFound(); 
+    }
 
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);

@@ -23,6 +23,7 @@ export const BlogSection: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedTag, setSelectedTag] = useState<string>("All Posts");
   const [showMobileFilter, setShowMobileFilter] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null); 
 
   const router = useRouter();
 
@@ -50,23 +51,26 @@ export const BlogSection: React.FC = () => {
     return `${day}${ordinalSuffix(day)} ${month} ${year}`;
   };
 
- const fetchArticles = async (page: number) => {
-   setIsLoading(true);
-   try {
-     const response = await fetch(
-       `https://dev.to/api/articles?page=${page}&per_page=6`
-     );
-     const data: Article[] = await response.json();
-
-     setArticles(data);
-     setFilteredArticles(data); 
-   } catch (error) {
-     console.error("Error fetching articles:", error);
-   } finally {
-     setIsLoading(false);
-   }
- };
-
+  const fetchArticles = async (page: number) => {
+    setIsLoading(true);
+    setError(null); // Reset error state
+    try {
+      const response = await fetch(
+        `https://dev.to/api/articles?page=${page}&per_page=6`
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch articles");
+      }
+      const data: Article[] = await response.json();
+      setArticles(data);
+      setFilteredArticles(data);
+    } catch (error) {
+      console.error("Error fetching articles:", error);
+      setError("Failed to fetch articles. Please try again later."); // Set error message
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     fetchArticles(page);
@@ -96,7 +100,10 @@ export const BlogSection: React.FC = () => {
   );
 
   return (
-    <div className="w-full lg:w-[1440px] bg-white p-8 sm:p-[64px_32px] flex flex-col gap-8 sm:gap-[60px]">
+    <div
+      className="w-full lg:w-[1440px] bg-white p-8 sm:p-[64px_32px] flex flex-col gap-8 sm:gap-[60px]"
+      data-testid="blog-section"
+    >
       <p className="text-center text-2xl sm:text-[40px] text-[#571244]">
         Stay Updated with the Latest trends in Tobams Group
       </p>
@@ -203,12 +210,19 @@ export const BlogSection: React.FC = () => {
         </div>
       </div>
 
+      {error && (
+        <div data-testid="error-message" className="text-red-500 text-center">
+          {error}
+        </div>
+      )}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-[30px] w-full max-w-[1312px] mx-auto">
         {filteredArticles.length > 0 ? (
           filteredArticles.map((article) => (
             <article
               key={article.id}
               className="w-full h-auto flex flex-col rounded-t-lg gap-6 sm:gap-[32px]"
+              data-testid="blog-post"
             >
               <div className="w-full h-[200px] sm:h-[300px] relative">
                 <div className="absolute top-2 left-2 z-10 rounded-md max-w-[250px] flex items-center p-2 text-[#571244] backdrop-blur-[9.09px] bg-white/50 text-sm font-medium">
@@ -232,7 +246,10 @@ export const BlogSection: React.FC = () => {
                   </p>
                   <div className="flex justify-between">
                     <div className="flex h-auto justify-center items-center">
-                      <p className="w-[129px] font-normal text-sm sm:text-[15px] self-center">
+                      <p
+                        className="w-[129px] font-normal text-sm sm:text-[15px] self-center"
+                        data-cy="article-date" // Add data-cy for article date
+                      >
                         {formatDate(article.published_timestamp)}
                       </p>
                       <div className="h-3/4 self-center border-l-2 border-gray-700 mx-3"></div>
@@ -242,6 +259,7 @@ export const BlogSection: React.FC = () => {
                     </div>
                     <p
                       onClick={() => router.push(`/articles/${article.id}`)}
+                      data-cy="article-card"
                       className="w-[74px] h-auto text-[#571244] cursor-pointer self-center underline underline-offset-2 decoration-1"
                     >
                       View Post
