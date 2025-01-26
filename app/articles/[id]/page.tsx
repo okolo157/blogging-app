@@ -95,7 +95,7 @@ export default async function BlogDetails({ params }: { params: Params }) {
   };
 
   return (
-    <div className="flex flex-col sm:w-full lg:w-[1440px] bg-white text-black">
+    <div className="flex flex-col overflow-clip sm:w-[375px] lg:w-[1440px] bg-white text-black">
       <Navbar />
       <div className="w-full max-w-[1312px] mx-auto flex flex-col gap-12 py-10 px-4 sm:px-6 lg:px-8">
         <div className="w-full gap-5">
@@ -124,7 +124,7 @@ export default async function BlogDetails({ params }: { params: Params }) {
           </div>
 
           <div
-            className="prose prose-sm sm:prose lg:prose-lg mx-auto"
+            className="prose prose-sm sm:prose lg:prose-lg mx-auto overflow-x-auto whitespace-pre-wrap break-words"
             dangerouslySetInnerHTML={{
               __html: makeEmbedsResponsive(article.body_html),
             }}
