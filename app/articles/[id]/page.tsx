@@ -19,7 +19,11 @@ interface Article {
   tags: string[];
 }
 
-const BlogDetails = async ({ params }: { params: { id: string } }) => {
+type BlogDetailsProps = {
+  params: { id: string };
+};
+
+const BlogDetails = async ({ params }: BlogDetailsProps) => {
   const { id } = params;
 
   const parsedId = parseInt(id, 10);
@@ -63,31 +67,31 @@ const BlogDetails = async ({ params }: { params: { id: string } }) => {
   };
 
   //youtube embed issue
-const makeEmbedsResponsive = (html: string) => {
-  const $ = load(html);
+  const makeEmbedsResponsive = (html: string) => {
+    const $ = load(html);
 
-  $("iframe[src*='youtube.com'], iframe[src*='vimeo.com']").each(
-    (_, element) => {
-      const $iframe = $(element);
+    $("iframe[src*='youtube.com'], iframe[src*='vimeo.com']").each(
+      (_, element) => {
+        const $iframe = $(element);
 
-      $iframe.removeAttr("width").removeAttr("height");
+        $iframe.removeAttr("width").removeAttr("height");
 
-      $iframe.wrap(
-        '<div class="iframe-container" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;"></div>'
-      );
+        $iframe.wrap(
+          '<div class="iframe-container" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;"></div>'
+        );
 
-      $iframe.css({
-        position: "absolute",
-        top: "0",
-        left: "0",
-        width: "100%",
-        height: "100%",
-      });
-    }
-  );
+        $iframe.css({
+          position: "absolute",
+          top: "0",
+          left: "0",
+          width: "100%",
+          height: "100%",
+        });
+      }
+    );
 
-  return $.html();
-};
+    return $.html();
+  };
 
   return (
     <div className="flex flex-col sm:w-full lg:w-[1440px] bg-white text-black">
