@@ -1,12 +1,14 @@
+// app/articles/[id]/page.tsx
 import React from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-import { Newsletter } from "@/components/Newsletter";
-import { MoreArticlesSection } from "@/components/MoreArticles";
 import { load } from "cheerio";
+import { Navbar } from "@/components/Navbar";
+import { MoreArticlesSection } from "@/components/MoreArticles";
+import { Newsletter } from "@/components/Newsletter";
+import { Footer } from "@/components/Footer";
 
+// Type definition for Article
 interface Article {
   id: number;
   title: string;
@@ -19,14 +21,13 @@ interface Article {
   tags: string[];
 }
 
-type BlogDetailsProps = {
-  params: { id: string };
-};
+type Params = Promise<{ id: string }>;
 
-export default async function BlogDetails({ params }: BlogDetailsProps) {
-  const { id } = params;
+export default async function BlogDetails({ params }: { params: Params }) {
+  const { id } = await params;
 
   const parsedId = parseInt(id, 10);
+
   if (isNaN(parsedId)) {
     notFound();
   }
@@ -138,5 +139,4 @@ export default async function BlogDetails({ params }: BlogDetailsProps) {
       </div>
     </div>
   );
-};
-
+}

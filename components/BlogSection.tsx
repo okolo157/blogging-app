@@ -53,7 +53,7 @@ export const BlogSection: React.FC = () => {
 
   const fetchArticles = async (page: number) => {
     setIsLoading(true);
-    setError(null); // Reset error state
+    setError(null); 
     try {
       const response = await fetch(
         `https://dev.to/api/articles?page=${page}&per_page=6`
@@ -66,7 +66,7 @@ export const BlogSection: React.FC = () => {
       setFilteredArticles(data);
     } catch (error) {
       console.error("Error fetching articles:", error);
-      setError("Failed to fetch articles. Please try again later."); // Set error message
+      setError("Failed to fetch articles. Please try again later.");
     } finally {
       setIsLoading(false);
     }
