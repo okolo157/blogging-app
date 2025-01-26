@@ -93,7 +93,7 @@ export const Navbar = () => {
           <div className="flex justify-between p-4 border-b border-gray-300">
             <Link href="/" passHref>
               <Image
-                src="/images/bg.png"
+                src="/images/logo.webp"
                 alt="logo image"
                 width={165.71}
                 height={64}

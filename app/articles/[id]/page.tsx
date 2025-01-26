@@ -110,7 +110,7 @@ const makeEmbedsResponsive = (html: string) => {
 
           <div className="relative w-full h-[250px] sm:h-[300px] lg:h-80 mb-6">
             <Image
-              src={article.cover_image || "/images/bg.png"}
+              src={article.cover_image || "/images/logo.webp"}
               alt={article.title}
               layout="fill"
               objectFit="cover"

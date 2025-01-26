@@ -97,7 +97,7 @@ export const MoreArticlesSection: React.FC = () => {
                 {article.tag_list[0]}
               </div>
               <Image
-                src={article.cover_image || "/images/bg.png"}
+                src={article.cover_image || "/images/logo.webp"}
                 alt={article.title}
                 fill
                 className="object-cover rounded-t-lg"
