@@ -1,4 +1,3 @@
-// app/articles/[id]/page.tsx
 import React from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -8,7 +7,6 @@ import { MoreArticlesSection } from "@/components/MoreArticles";
 import { Newsletter } from "@/components/Newsletter";
 import { Footer } from "@/components/Footer";
 
-// Type definition for Article
 interface Article {
   id: number;
   title: string;
